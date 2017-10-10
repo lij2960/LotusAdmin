@@ -354,7 +354,7 @@ html, body {
 .code {
     width: 960px;
     height: 540px;
-    background-color: red;
+    background-color: black;
     background-image: url('http://1j736563x3.iok.la:13668/code.gif');
     position: absolute;
     margin-left: 25%;
