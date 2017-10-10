@@ -18,8 +18,9 @@ class User extends Controller
         $post     = $this->request->post();
         $validate = validate('User');
         $validate->scene('login');
+        $username  =  $post['username'];
         $user_id = Db::name('user')
-            ->where('username', $post['username'])
+            ->where('username', $username)
             ->value('id');
         if (!$validate->check($post)) {
             $this->error($validate->getError());
