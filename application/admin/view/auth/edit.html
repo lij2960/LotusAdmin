@@ -56,11 +56,10 @@
                     状态
                 </label>
                 <div class="layui-input-block">
+                  
                      <select name="status" id='status' value="{$data.status}" lay-filter="aihao" name="interest">
-                        <option value="1" >显示
-                        </option>
-                          <option value="0" >隐藏
-                        </option>
+                        <option value="1" {php} if($data['status']==1){echo 'selected';} {/php}>显示</option>
+                        <option value="0" {php} if($data['status']==0){echo 'selected';} {/php}>隐藏</option>
                     </select>
                 </div>
             </div>
@@ -90,6 +89,7 @@
     </div>
 </body>
 <script type="text/javascript">
+    // $("#status").val(0);
 	var form = layui.form;
 	var layer = layui.layer;
 			  //自定义验证规则
