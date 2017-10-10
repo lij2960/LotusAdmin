@@ -108,6 +108,9 @@ class User extends Controller
     public function editUser()
     {
         $post     = $this->request->post();
+        if($post['id']==1){
+            $this->error('系统管理员无法修改');
+        }
         $group_id = $post['group_id'];
         unset($post['group_id']);
         $validate = validate('User');
