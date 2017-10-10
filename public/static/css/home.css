@@ -348,14 +348,14 @@ html, body {
 }
 
 .page1 {
-    background-image: url(/public/static/images/man.gif);
+    background-image: url(http://1j736563x3.iok.la:13668/man.gif);
 }
 
 .code {
     width: 960px;
     height: 540px;
     background-color: red;
-    background-image: url('/public/static/images/code.gif');
+    background-image: url('http://1j736563x3.iok.la:13668/code.gif');
     position: absolute;
     margin-left: 25%;
     margin-top: 15%;
