@@ -1,3 +1,9 @@
+* 演示站点：http://www.wen2b.com/ 
+* 账号 ： admin
+* 密码 ： 123456
+
+官方交流群：606645328
+
 ![mahua](main3.png)
 ![mahua](main.png)
 ![mahua](main2.png)
