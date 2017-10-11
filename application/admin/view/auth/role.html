@@ -73,12 +73,12 @@ function addRole(){
    })
 }
 function delRole(obj,id){
-   layer.confirm('确认要全部删除吗？',function(index){
-        $.ajax({
-    url: 'delRole',
-    type: 'post',
-    dataType: 'json',
-    data: {id:id},
+   layer.confirm('确认要删除吗？',function(index){
+    $.ajax({
+      url: 'delRole',
+      type: 'post',
+      dataType: 'json',
+      data: {id:id},
   })
   .done(function(data){
       if(data.code==1){
