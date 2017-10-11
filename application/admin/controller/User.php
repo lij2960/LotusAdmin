@@ -16,6 +16,9 @@ class User extends Controller
     public function login()
     {
         $post     = $this->request->post();
+        if(empty($post)){
+            $this->redirect('user/index');
+        }
         $validate = validate('User');
         $validate->scene('login');
         $username  =  $post['username'];
