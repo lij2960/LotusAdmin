@@ -93,7 +93,7 @@ function login(){
 		if(data.code==0){
 			layer.msg(data.msg,{});
 		}else{
-			layer.msg(data.msg,{icon:1,},function(){
+			layer.msg(data.msg,{icon:1,offset:'t'},function(){
 				location.href = "index/index";
 			});
 			
