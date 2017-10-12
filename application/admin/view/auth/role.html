@@ -21,6 +21,7 @@
           <tr>
             <th>ID</th>
             <th>角色</th>
+            <th>状态</th>
             <th>操作</th>
         </thead>
         <tbody>
@@ -28,6 +29,15 @@
           <tr>
             <td>{$vo.id}</td>
             <td>{$vo.title}</td> 
+            <td>
+              {php}
+              if($vo['status']==1)
+              {echo '启用'; }else{
+                echo '<span style=color:red>禁用</span>';
+            }
+          {/php}
+
+           </td> 
             <td>
                 <button class="layui-btn layui-btn-mini" onclick="x_admin_show('用户授权','showAuth.html?id={$vo.id}',500,350)">授权</button>
                 <button class="layui-btn layui-btn-mini" onclick="x_admin_show('角色编辑','showRoleEdit.html?id={$vo.id}',500,250)">编辑</button>
