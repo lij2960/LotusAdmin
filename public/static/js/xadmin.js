@@ -1,12 +1,12 @@
 $(function () {
-    //加载弹出层
-    layui.use(['form','element'],
+   //加载弹出层
+   layui.use(['form','element'],
     function() {
         layer = layui.layer;
         element = layui.element;
     });
 
-    //触发事件
+  //触发事件
   var tab = {
         tabAdd: function(title,url,id){
           //新增一个Tab项
@@ -19,8 +19,6 @@ $(function () {
         ,tabDelete: function(othis){
           //删除指定Tab项
           element.tabDelete('xbs_tab', '44'); //删除：“商品管理”
-          
-          
           othis.addClass('layui-btn-disabled');
         }
         ,tabChange: function(id){

@@ -23,6 +23,11 @@ class Index extends Controller
     	}
     	return $list;
     }
+    function array2tree($array,$pid='pid',){
+        if(){
+
+        }
+    }
 
 
 }

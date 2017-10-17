@@ -11,62 +11,24 @@
 
 // 应用公共文件
 function isMobile()
-{ 
-    if (isset ($_SERVER['HTTP_X_WAP_PROFILE']))
-    {
+{
+    if (isset($_SERVER['HTTP_X_WAP_PROFILE'])) {
         return true;
-    } 
-    if (isset ($_SERVER['HTTP_VIA']))
-    { 
+    }
+    if (isset($_SERVER['HTTP_VIA'])) {
         return stristr($_SERVER['HTTP_VIA'], "wap") ? true : false;
-    } 
-    if (isset ($_SERVER['HTTP_USER_AGENT']))
-    {
-        $clientkeywords = array ('nokia',
-            'sony',
-            'ericsson',
-            'mot',
-            'samsung',
-            'htc',
-            'sgh',
-            'lg',
-            'sharp',
-            'sie-',
-            'philips',
-            'panasonic',
-            'alcatel',
-            'lenovo',
-            'iphone',
-            'ipod',
-            'blackberry',
-            'meizu',
-            'android',
-            'netfront',
-            'symbian',
-            'ucweb',
-            'windowsce',
-            'palm',
-            'operamini',
-            'operamobi',
-            'openwave',
-            'nexusone',
-            'cldc',
-            'midp',
-            'wap',
-            'mobile'
-            ); 
-        if (preg_match("/(" . implode('|', $clientkeywords) . ")/i", strtolower($_SERVER['HTTP_USER_AGENT'])))
-        {
+    }
+    if (isset($_SERVER['HTTP_USER_AGENT'])) {
+        $clientkeywords = array('nokia', 'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-', 'philips', 'panasonic', 'alcatel', 'lenovo', 'iphone', 'ipod', 'blackberry', 'meizu', 'android', 'netfront', 'symbian', 'ucweb', 'windowsce', 'palm', 'operamini', 'operamobi', 'openwave', 'nexusone', 'cldc', 'midp', 'wap', 'mobile');
+        if (preg_match("/(" . implode('|', $clientkeywords) . ")/i", strtolower($_SERVER['HTTP_USER_AGENT']))) {
             return true;
-        } 
-    } 
-    if (isset ($_SERVER['HTTP_ACCEPT']))
-    { 
-        if ((strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') !== false) && (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') === false || (strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') < strpos($_SERVER['HTTP_ACCEPT'], 'text/html'))))
-        {
+        }
+    }
+    if (isset($_SERVER['HTTP_ACCEPT'])) {
+        if ((strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') !== false) && (strpos($_SERVER['HTTP_ACCEPT'], 'text/html') === false || (strpos($_SERVER['HTTP_ACCEPT'], 'vnd.wap.wml') < strpos($_SERVER['HTTP_ACCEPT'], 'text/html')))) {
             return true;
-        } 
-    } 
+        }
+    }
     return false;
 }
 /**
@@ -119,7 +81,7 @@ function array2tree(&$array, $pid_name = 'pid', $child_key_name = 'children')
         return $array;
     }
     $tree = [];
-    while (isset($counter[0]) && $counter[0] > 0){
+    while (isset($counter[0]) && $counter[0] > 0) {
         $temp = array_shift($array);
         if (isset($counter[$temp['id']]) && $counter[$temp['id']] > 0) {
             array_push($array, $temp);
@@ -146,8 +108,10 @@ function array_child_append($parent, $pid, $child, $child_key_name)
 {
     foreach ($parent as &$item) {
         if ($item['id'] == $pid) {
-            if (!isset($item[$child_key_name]))
+            if (!isset($item[$child_key_name])) {
                 $item[$child_key_name] = [];
+            }
+
             $item[$child_key_name][] = $child;
         }
     }
@@ -168,20 +132,18 @@ function check_mobile_number($mobile)
     return preg_match($reg, $mobile) ? true : false;
 }
 //获取客户端真实IP
-function getClientIP()  
-{  
-    global $ip;  
-    if (getenv("HTTP_CLIENT_IP"))  
-        $ip = getenv("HTTP_CLIENT_IP");  
-    else if(getenv("HTTP_X_FORWARDED_FOR"))  
-        $ip = getenv("HTTP_X_FORWARDED_FOR");  
-    else if(getenv("REMOTE_ADDR"))  
-        $ip = getenv("REMOTE_ADDR");  
-    else $ip = "Unknow";  
-    return $ip;  
+function getClientIP()
+{
+    global $ip;
+    if (getenv("HTTP_CLIENT_IP")) {
+        $ip = getenv("HTTP_CLIENT_IP");
+    } else if (getenv("HTTP_X_FORWARDED_FOR")) {
+        $ip = getenv("HTTP_X_FORWARDED_FOR");
+    } else if (getenv("REMOTE_ADDR")) {
+        $ip = getenv("REMOTE_ADDR");
+    } else {
+        $ip = "Unknow";
+    }
+
+    return $ip;
 }
-
-
- 
-
-
