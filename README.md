@@ -56,8 +56,8 @@
 * [xadmin](http://x.xuebingsi.com/)
 
 ##捐赠作者，支持继续开发
-!(wechat.jpg)
-!(alipay.jpg)
+![](wechat.jpg =100x100)
+![](alipay.jpg =100x100)
 
 ##关于作者
 
