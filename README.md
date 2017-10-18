@@ -55,10 +55,9 @@
 * [thinkphp](http://www.thinkphp.cn/)
 * [xadmin](http://x.xuebingsi.com/)
 
-##捐赠作者，支持继续开发
-
+##微信捐赠作者，支持继续开发
 <img src="wechat.jpg" style="float: left" alt="..." width="100px">
-&ensp;
+##支付宝捐赠作者，支持继续开发
 <img src="alipay.jpg" style="float: left" alt="..." width="100px">
 
 ##关于作者
