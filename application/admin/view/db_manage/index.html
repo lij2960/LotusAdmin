@@ -1,0 +1,36 @@
+{include file="public/head"}
+    <body>
+    <div class="x-body" >
+        <button class="layui-btn layui-btn-small " onclick="x_admin_show('oneKey','showAdd.html',500,460)">
+        </i>oneKeyBackup</button>
+        <button onclick="javascript:location.reload()" class="layui-btn layui-btn-small">refresh</button>
+        <span class="x-right" style="line-height:40px">共有数据:10条</span>
+
+
+    <table class="layui-table">
+        <thead>
+          <tr>
+            <th>数据表</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+          {foreach $db_names as $vo}
+            <tr>
+                <td>{$vo}</td>
+                <td>
+                    <button class="layui-btn layui-btn-mini">edit</button>
+                    <button class="layui-btn layui-btn-mini">opt</button>
+                </td>
+            </tr>
+        {/foreach}
+        </tbody>
+      </table>
+	      <div class="page">
+	        <div>
+
+	        </div>
+	      </div>
+    </div>
+</body>
+
+{include file="public/foot"}
