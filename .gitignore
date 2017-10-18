@@ -3,4 +3,4 @@ composer.lock
 *.log
 .user.ini
 index.html
-.hataccess
+.htaccess
