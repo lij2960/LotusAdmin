@@ -55,6 +55,9 @@
 * [thinkphp](http://www.thinkphp.cn/)
 * [xadmin](http://x.xuebingsi.com/)
 
+##捐赠作者，支持继续开发
+![mahua](wechat.jpg)
+![mahua](alipay.jpg)
 
 ##关于作者
 

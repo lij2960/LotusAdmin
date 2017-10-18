@@ -66,7 +66,6 @@ function array2level($array, $pid = 0, $level = 1)
     }
     return $list;
 }
-
 /**
  * 构建层级（树状）数组
  * @param array  $array          要进行处理的一维数组，经过该函数处理后，该数组自动转为树状数组
