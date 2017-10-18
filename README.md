@@ -58,7 +58,7 @@
 ##捐赠作者，支持继续开发
 
 <img src="wechat.jpg" style="float: left" alt="..." width="100px">
-
+&ensp;
 <img src="alipay.jpg" style="float: left" alt="..." width="100px">
 
 ##关于作者
