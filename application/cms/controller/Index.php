@@ -16,6 +16,7 @@ class Index extends Controller
         $array = Db::name('auth_rule')->select();
         dump($array);
         //判断是否有子集
+        
      
         
     }
