@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
-Source Server Version : 50505
-Source Host           : localhost:3306
+Source Server         : tent
+Source Server Version : 50557
+Source Host           : 122.152.192.48:3306
 Source Database       : lotus
 
 Target Server Type    : MYSQL
-Target Server Version : 50505
+Target Server Version : 50557
 File Encoding         : 65001
 
-Date: 2017-10-09 15:40:37
+Date: 2017-10-26 09:22:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -125,7 +125,7 @@ CREATE TABLE `sm_auth_rule` (
 INSERT INTO `sm_auth_rule` VALUES ('1', 'admin/user/default', '用户管理', '1', '1', '0', '2', '0', '');
 INSERT INTO `sm_auth_rule` VALUES ('2', 'admin/user/userlist', '用户列表', '1', '1', '1', '3', '0', '');
 INSERT INTO `sm_auth_rule` VALUES ('3', 'admin/auth/index', '权限管理', '1', '1', '1', '4', '0', '');
-INSERT INTO `sm_auth_rule` VALUES ('103', 'admin/auth/showRole', '角色列表', '1', '1', '1', '5', '0', '');
+INSERT INTO `sm_auth_rule` VALUES ('4', 'admin/auth/showRole', '角色列表', '1', '1', '1', '5', '0', '');
 
 -- ----------------------------
 -- Table structure for sm_category
@@ -265,5 +265,4 @@ CREATE TABLE `sm_user` (
 -- ----------------------------
 -- Records of sm_user
 -- ----------------------------
-INSERT INTO `sm_user` VALUES ('27', 'wenhainande', '121144d6c3114c583415f06860ad3710', '', 'whnde@qc.com', '1', '2017-09-26 05:28:15', null, '0.0.0.0');
 INSERT INTO `sm_user` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', 'whnde@qq.com', '1', '2017-09-20 07:01:19', '2017-10-09 11:11:07', '127.0.0.1');
