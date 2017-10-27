@@ -5,3 +5,4 @@ composer.lock
 .htaccess
 404.html
 index.html
+.well-known
