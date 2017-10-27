@@ -82,14 +82,14 @@
 <script type="text/javascript">
 	var form = layui.form;
 	var layer = layui.layer;
-			  //自定义验证规则
-			  form.verify({
-			    title: function(value){
-			      if(value.length < 3){
-			        return '标题至少得2个字符啊';
-			      }
-			    }
-			  });
+		  //自定义验证规则
+		  form.verify({
+		    title: function(value){
+		      if(value.length < 3){
+		        return '标题至少得2个字符啊';
+		      }
+		    }
+		  });
 		//监听提交
 		form.on('submit(demo1)', function(data){
 		      layer.alert(JSON.stringify(data.field), {

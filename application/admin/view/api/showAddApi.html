@@ -2,90 +2,97 @@
 <body>
     <style media="screen" type="text/css">
         header {
-    color: black;
-}
+            color: black;
+        }
     </style>
     <div class="x-body">
-        <form action="add" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
-            
+        <form action="addApi" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    上级菜单
+                    接口名称
                 </label>
                 <div class="layui-input-block">
-                    <select lay-filter="aihao" name="pid" id='pid'>
-                        <option value="0">顶级菜单
+                    <input autocomplete="off" class="layui-input" id="name" lay-verify="required" name="name" placeholder="请输入接口名称" type="text">
+                    </input>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    url
+                </label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input" id="url" lay-verify="required" name="url" placeholder="请输入url" type="text">
+                    </input>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    appid(系统)
+                </label>
+                <div class="layui-input-block">
+                    <input id="appid" readonly autocomplete="off" class="layui-input" lay-verify="required" name="appid" placeholder="请输入appid" type="text">
+                    </input>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    secret(系统)
+                </label>
+                <div class="layui-input-block">
+                    <input id="secret" readonly value="" autocomplete="off" class="layui-input"  lay-verify="required" name="secret" placeholder="请输入secret" type="text">
+                    </input>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    传输方式
+                </label>
+                <div class="layui-input-block">
+                     <select name="method" id='method' lay-filter="method" >
+                        <option value="post" >POST
                         </option>
-                         {volist name='auth' id='vo'}
-                                <option value="{$vo.id}">{$vo.level-1|str_repeat='丨--',###}{$vo.title}</option>
-                         {/volist}
-                    </select>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    菜单名称
-                </label>
-                <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="title" lay-verify="required" name="title" placeholder="请输入菜单名称" type="text">
-                    </input>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    控制器
-                </label>
-                <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="name" lay-verify="required" name="name" placeholder="请输入控制器" type="text">
-                    </input>
-                </div>
-            </div>
-
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    图标icon
-                </label>
-                <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="icon"  name="icon" placeholder="请输入图标类，不熟悉font-some请留空" type="text">
-                    </input>
-                </div>
-            </div>
-
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    状态
-                </label>
-                <div class="layui-input-block">
-                     <select name="status" id='status' lay-filter="aihao" name="interest">
-                        <option value="1" >显示
-                        </option>
-                          <option value="0" >隐藏
+                          <option value="get" >GET
                         </option>
                     </select>
                 </div>
             </div>
-
-            <div class="layui-form-item">
+            <!-- <div class="layui-form-item">
                 <label class="layui-form-label">
-                    排序
+                    参数
                 </label>
                 <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="sort"  lay-verify="required" name="sort" placeholder="排序数值越大排列越靠前" type="text" value="0">
+                    <input style="width: 49%" autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
+                    </input>
+                    <br>
+                     <input style="width: 49%;margin-left: 50%;margin-top:-52px;"  autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
                     </input>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
+                    <input style="width: 49%" autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
+                    </input>
+                    <br>
+                     <input style="width: 49%;margin-left: 50%;margin-top:-52px;"  autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
+                    </input>
+                </div>
+            </div> -->
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    
                     <button class="layui-btn"  lay-filter="toSubmit" lay-submit=""  style="margin-left: 33%">
-                        提交
+                        submit
                     </button>
+
                     <button style="display: none;" class="layui-btn layui-btn-primary" id="reset" type="reset">
-                        重置
+                        reset
                     </button>
                 </div>
             </div>
@@ -96,22 +103,25 @@
 <script type="text/javascript">
 	var form = layui.form;
 	var layer = layui.layer;
-      //自定义验证规则
-      form.verify({
-        title: function(value){
-          if(value.length < 3){
-            return '标题至少得2个字符啊';
-          }
+    //自定义验证规则
+    form.verify({
+        url:function(value){
+           console.log(value);
+           if(!checkURL(value)){
+                return '不符合url规则';
+           }
         }
-      });
-	//监听提交
+    });
+	//监听提交，学习参考用
 	// form.on('submit(demo1)', function(data){
 	//       layer.alert(JSON.stringify(data.field), {
 	//       title: '最终的提交信息'
 	//     })
 	//     return false;
 	//   });
-	$(document).ready(function(){ 
+	$(document).ready(function(){
+        $("#appid").val(GetRandomNum(100000,1000000));
+        $("#secret").val(generateMixed(25));  
 	     var options = {
 		      type:'post',           //post提交
 		      //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
@@ -142,8 +152,29 @@
 	    $('#mainForm').ajaxForm(options).submit(function(data){
 	    	//无逻辑
 	    }); 
-
 	});
+    function GetRandomNum(Min,Max)
+    {   
+        var Range = Max - Min;   
+        var Rand = Math.random();   
+        return(Min + Math.round(Rand * Range));   
+    }   
+    var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    function generateMixed(n){
+         var res = "";
+         for(var i = 0; i < n ; i ++) {
+             var id = Math.ceil(Math.random()*35);
+             res += chars[id];
+         }
+         return res;
+    }
+    function checkURL(str){
+        if (str.match("/(http[s]?|ftp)://[^/.]+?..+\w$/i") == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 </script>
- 
 {include file='public/foot'}
