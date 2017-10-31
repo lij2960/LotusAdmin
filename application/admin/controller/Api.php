@@ -3,6 +3,7 @@ namespace app\admin\controller;
 
 use \think\Db;
 use \think\Reuquest;
+
 class api extends Main
 {
 	function index(){
@@ -15,5 +16,5 @@ class api extends Main
  		$data = $this->request->post();
  		dump($data);
  	}
-	
+ 	
 }
