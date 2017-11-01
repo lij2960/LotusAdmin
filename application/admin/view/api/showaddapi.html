@@ -2,6 +2,7 @@
 <body>
     <div class="x-body">
         <form action="addApi" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
+
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     接口名称
@@ -14,31 +15,20 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    url
+                    BASE_URL
                 </label>
                 <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="url" lay-verify="required" name="url" placeholder="请输入url" type="text">
+                    <input autocomplete="off" class="layui-input" id="base_url" lay-verify="required" name="base_url" placeholder="请输入BASE_URL" type="text">
                     </input>
                 </div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    appid(系统)
+                    接口映射(系统)
                 </label>
                 <div class="layui-input-block">
-                    <input id="appid" readonly autocomplete="off" class="layui-input" lay-verify="required" name="appid" placeholder="请输入appid" type="text">
-                    </input>
-                </div>
-            </div>
-
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    secret(系统)
-                </label>
-                <div class="layui-input-block">
-                    <input id="secret" readonly value="" autocomplete="off" class="layui-input"  lay-verify="required" name="secret" placeholder="请输入secret" type="text">
+                    <input id="hash" readonly value="" autocomplete="off" class="layui-input"  lay-verify="required" name="hash" placeholder="请输入hash" type="text">
                     </input>
                 </div>
             </div>
@@ -49,41 +39,29 @@
                 </label>
                 <div class="layui-input-block">
                      <select name="method" id='method' lay-filter="method" >
-                        <option value="post" >POST
+                        <option value="2">POST
                         </option>
-                          <option value="get" >GET
+                        <option value="1">GET
+                        </option>
+                        <option value="0">不限
                         </option>
                     </select>
                 </div>
             </div>
 
-            <!-- <div class="layui-form-item">
-                <label class="layui-form-label">
-                    参数
-                </label>
+            <div class="layui-form-item">
+                        <label class="layui-form-label">
+                            AccessToken
+                        </label>
                 <div class="layui-input-block">
-                    <input style="width: 49%" autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
-                    </input>
-                    <br>
-                     <input style="width: 49%;margin-left: 50%;margin-top:-52px;"  autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
-                    </input>
+                       <input type="checkbox" name="is_token" lay-skin="switch" lay-text="启用|禁用" >
                 </div>
             </div>
-
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <input style="width: 49%" autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
-                    </input>
-                    <br>
-                     <input style="width: 49%;margin-left: 50%;margin-top:-52px;"  autocomplete="off" class="layui-input" id="name"  name="name" placeholder="参数" type="text">
-                    </input>
-                </div>
-            </div> -->
-
+            
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn"  lay-filter="toSubmit" lay-submit=""  style="margin-left: 33%">
-                        submit
+                        提交
                     </button>
                     <button style="display: none;" class="layui-btn layui-btn-primary" id="reset" type="reset">
                         reset
@@ -92,7 +70,7 @@
             </div>
 
         </form>
-
+        
     </div>
 </body>
 
@@ -116,8 +94,8 @@
 	//     return false;
 	//   });
 	$(document).ready(function(){
-        $("#appid").val(GetRandomNum(100000,1000000));
-        $("#secret").val(generateMixed(25));  
+        // $("#appid").val(GetRandomNum(100000,1000000));
+        $("#hash").val(generateMixed(25));  
 	     var options = {
 		      type:'post',           //post提交
 		      //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url

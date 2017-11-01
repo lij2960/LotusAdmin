@@ -102,7 +102,7 @@ header {
 		      	if(data.code==0){
 		      		layer.msg(data.msg);
 		      	}else{
-		      		layer.msg(data.msg,{icon:1},function(){
+		      		layer.msg(data.msg,{icon:1,time:500},function(){
 		      			$("#reset").click();
 		      			x_admin_close();
 		      			parent.location.reload();

@@ -71,9 +71,9 @@
               success:function(data){
                     console.log(data);
                     if(data.code==0){
-                        layer.msg(data.msg,{icon:2});
+                        layer.msg(data.msg,{icon:2,time:0});
                     }else{
-                        layer.msg(data.msg,{icon:1},function(){
+                        layer.msg(data.msg,{icon:1,time:0},function(){
                             $("#reset").click();
                             x_admin_close();
                             parent.location.reload();

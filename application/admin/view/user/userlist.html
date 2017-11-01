@@ -59,7 +59,6 @@
 </body>
     <script>
      
-
       layui.use(['laydate','form'], function(){
         var laydate = layui.laydate;
         //执行一个laydate实例
@@ -71,6 +70,7 @@
           elem: '#end' //指定元素
         });
       });
+
 
        /*用户-停用*/
       function member_stop(obj,id){
@@ -93,6 +93,8 @@
               
           });
       }
+
+
       function delAll (argument) {
         var data = tableCheck.getData();
         layer.confirm('确认要全部删除吗？',function(index){
@@ -121,7 +123,10 @@
             });
         });
       }
+
+
     </script>
+    
     <script>var _hmt = _hmt || []; (function() {
         var hm = document.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
