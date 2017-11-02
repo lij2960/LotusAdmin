@@ -1,60 +1,36 @@
 {include file='public/head'}
 <body>
     <div class="x-body">
-        <form action="addApi" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
+        <form action="edit_app" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     接口名称
                 </label>
                 <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="name" lay-verify="required" name="name" placeholder="请输入接口名称" type="text">
+                    <input autocomplete="off" class="layui-input" id="name" lay-verify="required" name="name" value="{$data.name}" placeholder="请输入应用名称" type="text">
                     </input>
                 </div>
             </div>
 
+
             <div class="layui-form-item">
                 <label class="layui-form-label">
-                    BASE_URL
+                    appid(系统)
                 </label>
                 <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="base_url" lay-verify="required" name="base_url" placeholder="请输入BASE_URL" type="text">
+                    <input style="color:blue" id="app_id" readonly value="{$data.app_id}" autocomplete="off" class="layui-input"  lay-verify="required" name="app_id" type="text">
                     </input>
                 </div>
             </div>
 
-            <div class="layui-form-item">
+              <div class="layui-form-item">
                 <label class="layui-form-label">
-                    接口映射(系统)
+                    secret(系统)
                 </label>
                 <div class="layui-input-block">
-                    <input id="hash" readonly value="" autocomplete="off" class="layui-input"  lay-verify="required" name="hash" placeholder="请输入hash" type="text">
+                    <input style="color:blue" id="secret" readonly value="{$data.secret}" autocomplete="off" class="layui-input"  lay-verify="required" name="secret" type="text">
                     </input>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    传输方式
-                </label>
-                <div class="layui-input-block">
-                     <select name="method" id='method' lay-filter="method" >
-                        <option value="2">POST
-                        </option>
-                        <option value="1">GET
-                        </option>
-                        <option value="0">不限
-                        </option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="layui-form-item">
-                        <label class="layui-form-label">
-                            AccessToken
-                        </label>
-                <div class="layui-input-block">
-                       <input type="checkbox" name="is_token" lay-skin="switch" lay-text="启用|禁用" >
                 </div>
             </div>
             
@@ -94,8 +70,6 @@
 	//     return false;
 	//   });
 	$(document).ready(function(){
-        // $("#appid").val(GetRandomNum(100000,1000000));
-        $("#hash").val(generateMixed(25));  
 	     var options = {
 		      type:'post',           //post提交
 		      //url:'http://ask.tongzhuo100.com/server/****.php?='+Math.random(),   //url
@@ -110,7 +84,7 @@
     		      	if(data.code==0){
     		      		layer.msg(data.msg);
     		      	}else{
-    		      		layer.msg(data.msg,{icon:1},function(){
+    		      		layer.msg(data.msg,{icon:1,time:500},function(){
     		      			$("#reset").click();
     		      			x_admin_close();
     		      			parent.location.reload();
@@ -127,21 +101,7 @@
 	    	//无逻辑
 	    }); 
 	});
-    function GetRandomNum(Min,Max)
-    {   
-        var Range = Max - Min;   
-        var Rand = Math.random();   
-        return(Min + Math.round(Rand * Range));   
-    }   
-    var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-    function generateMixed(n){
-         var res = "";
-         for(var i = 0; i < n ; i ++) {
-             var id = Math.ceil(Math.random()*35);
-             res += chars[id];
-         }
-         return res;
-    }
+   
     function checkURL(str){
         if (str.match("/(http[s]?|ftp)://[^/.]+?..+\w$/i") == null) {
             return false;
