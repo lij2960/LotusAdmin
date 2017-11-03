@@ -9,7 +9,7 @@ use \app\admin\model\App as AppModel;
 class api extends Main
 {
 	//app相关
-	function list(){
+	function app_list(){
 		$data = Db::name('app')->paginate('10');
 		$this->assign('data',$data);
 		return $this->fetch('app_list');
