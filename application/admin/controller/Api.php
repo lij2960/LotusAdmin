@@ -107,5 +107,26 @@ class api extends Main
     	ApiModel::destroy($id);
     	$this->success('delete success');
  	}
+
+ 	function param($id){
+ 		$data = Db::name('api')->where('id',$id)->field('key,value')->find();
+ 		return $this->fetch('param',['api_id'=>$id]);
+ 	}
+
+ 	function add_param(){
+ 		$post = $this->request->post();
+ 		$id = $post['api_id'];
+ 		unset($post['api_id']);
+ 		$a = count(explode('-', $post['key']));
+ 		$b = count(explode('-', $post['value']));
+ 		if($a!==$b){
+ 		 	 $this->error('参数与值数量不匹配');
+ 		 }else{
+ 		 	Db::name('api')
+ 		 		->where('id',$id)
+ 		 		->update(['key'=>$post['key'],'value'=>$post['value']]);
+ 		 	$this->success('测试参数添加成功');
+ 		 }
+ 	}
  	
 }
