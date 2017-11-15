@@ -40,11 +40,12 @@
                     <button type="button" onClick="change_status('{$vo.id}','{$vo.is_token}')" class="layui-btn layui-btn-mini ">启用</button>
                     {/eq}
                 </td>
+
                 <td>{$vo.key}</td>
                  <td>{$vo.value}</td>
                 <td>
-                    <button type="button" onClick="x_admin_show('接口参数','param.html?id={$vo.id}',500,250)" class="layui-btn layui-btn-mini">测试参数</button> 
-                    <button type="button" onClick="deleteAuthRule({$vo.id})" class="layui-btn layui-btn-mini">执行测试</button>
+                    <button type="button" onClick="x_admin_show('接口参数','param.html?id={$vo.id}',800,190)" class="layui-btn layui-btn-mini">测试参数</button> 
+                    <button type="button" onClick="doTest({$vo.id})" class="layui-btn layui-btn-mini">执行测试</button>
                 </td>  
                 <td>     
                         
@@ -102,6 +103,17 @@
                 }
             });
         });  
+    }
+    function doTest(id){
+       $.ajax({
+         url: 'doTest',
+         type: 'post',
+         dataType: 'json',
+         data: {id:id},
+       })
+       .done(function(data){
+            
+       })
     }
 </script>
 {include file="public/foot"}

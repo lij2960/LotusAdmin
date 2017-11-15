@@ -109,24 +109,62 @@ class api extends Main
  	}
 
  	function param($id){
- 		$data = Db::name('api')->where('id',$id)->field('key,value')->find();
- 		return $this->fetch('param',['api_id'=>$id]);
+ 		$data = Db::name('api')->where('id',$id)->field('param')->find();
+ 		return $this->fetch('param',['api_id'=>$id,'data'=>$data]);
  	}
 
- 	function add_param(){
+ 	function edit_param(){
  		$post = $this->request->post();
  		$id = $post['api_id'];
- 		unset($post['api_id']);
- 		$a = count(explode('-', $post['key']));
- 		$b = count(explode('-', $post['value']));
- 		if($a!==$b){
- 		 	 $this->error('参数与值数量不匹配');
- 		 }else{
- 		 	Db::name('api')
+ 		Db::name('api')
  		 		->where('id',$id)
- 		 		->update(['key'=>$post['key'],'value'=>$post['value']]);
- 		 	$this->success('测试参数添加成功');
- 		 }
+ 		 		->update(['param'=>$post['param']]);
+ 		$this->success('测试参数添加成功');
  	}
- 	
+
+ 	function doTest(){
+ 		$id   = $this->request->post('id');
+ 		$data = Db::name('api')
+ 				->where('id',$id)
+ 				->field('param,base_url,method')
+ 				->find();
+ 		if($data['method']=='post'){
+ 			$post_data = json_decode($data['param']);
+ 			$this->curl_post($data['base_url'],$post_data);	
+ 		}else{
+ 			$get_data = json_decode($data['param']);
+ 			$this->curl_get($url);
+ 		}
+ 	}
+
+ 	function curl_get($url){
+ 		$ch = curl_init();
+	　　//设置选项，包括URL
+	　　curl_setopt($ch, CURLOPT_URL, $url);
+	　　curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	　　curl_setopt($ch, CURLOPT_HEADER, 0);
+	　　//执行并获取HTML文档内容
+	　　$output = curl_exec($ch);
+	　　//释放curl句柄
+	　　curl_close($ch);
+	　　//打印获得的数据
+	　　return json($output);
+ 	}
+
+ 	function curl_post($url,$post_data){
+ 			// $url = "http://localhost/web_services.php";
+		    // $post_data = array ("username" => "bob","key" => "12345");
+		　　$ch = curl_init();
+		　　curl_setopt($ch, CURLOPT_URL, $url);
+		　　curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		　　// post数据
+		　　curl_setopt($ch, CURLOPT_POST, 1);
+		　　// post的变量
+		　　curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		　　$output = curl_exec($ch);
+		　　curl_close($ch);
+		　　//打印获得的数据
+		　　return json($output);
+ 	}
+
 }

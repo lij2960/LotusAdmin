@@ -92,7 +92,7 @@ function delRole(obj,id){
   })
   .done(function(data){
       if(data.code==1){
-          layer.msg(data.msg,{icon:1,offset:"t",time:0},function(){
+          layer.msg(data.msg,{icon:1,offset:"t",time:500},function(){
               location.reload();
           });
        }else{

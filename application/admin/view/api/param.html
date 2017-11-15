@@ -2,31 +2,25 @@
 <body>
   
     <div class="x-body">
-        <form action="add_param" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
+        <form action="edit_param" class="layui-form" id="mainForm" method="post" style="margin-right: 20px;">
             
-            <input type="hidden" name="api_id" value="{$api_id}"> 
+            <input type="hidden" name="api_id" value="{$api_id}">
 
+           
+           
             <div class="layui-form-item">
-                <label class="layui-form-label">
-                    参数
+                <label style="font-size: 14px;" class="layui-form-label">
+                参数(json)
                 </label>
                 <div class="layui-input-block">
-                    <input autocomplete="off" class="layui-input" id="key" lay-verify="required" name="key" placeholder="请输入参数，多个参数用-分割：id-name" type="text">
+                    <input style="font-size: 24px;"  autocomplete="off" value="{$data['param']}" class="layui-input" id="param" lay-verify="required" name="param" placeholder="请输入JSON参数:{'id'=>2,'name'=>'jack'}" type="text">
                     </input>
                 </div>
             </div>
 
-            <div class="layui-form-item">
-                <label class="layui-form-label">
-                    值
-                </label>
-                <div class="layui-input-block">
-                    <input autocomplete="off"   class="layui-input" id="value" lay-verify="required" name="value" placeholder="请输入参数，多个参数用-分割：例如2-jack" type="text">
-                    </input>
-                </div>
-            </div>
+         
 
-            <div class="layui-form-item">
+            <!--<div class="layui-form-item">
                 <label class="layui-form-label">
                     上级菜单
                 </label>
@@ -38,7 +32,7 @@
                         </option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <div class="layui-form-item">
                 <div class="layui-input-block">
