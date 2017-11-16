@@ -19,8 +19,7 @@
             <th>hash</th>
             <th>传输方式</th>
             <th>AcessToken</th>
-            <th>key</th>
-             <th>value</th>
+            <th>参数</th>
             <th>测试</th>
             <th>操作</th>
         </thead>
@@ -41,11 +40,10 @@
                     {/eq}
                 </td>
 
-                <td>{$vo.key}</td>
-                 <td>{$vo.value}</td>
+                <td>{$vo.param}</td>
                 <td>
-                    <button type="button" onClick="x_admin_show('接口参数','param.html?id={$vo.id}',800,190)" class="layui-btn layui-btn-mini">测试参数</button> 
-                    <button type="button" onClick="doTest({$vo.id})" class="layui-btn layui-btn-mini">执行测试</button>
+                    <button type="button" onClick="x_admin_show('接口参数(多个参数用|分割)','param.html?id={$vo.id}',800,190)" class="layui-btn layui-btn-mini">测试参数</button> 
+                    <button type="button" onClick="x_admin_show('测试结果','doTest.html?id={$vo.id}',800,390)" class="layui-btn layui-btn-mini">执行测试</button>
                 </td>  
                 <td>     
                         

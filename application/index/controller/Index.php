@@ -8,4 +8,7 @@ class Index extends Controller
     {
       return $this->fetch();
     }
+    public function test($id,$name){
+    	var_dump($id.$name);
+    }
 }
