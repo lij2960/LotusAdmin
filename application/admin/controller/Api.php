@@ -141,18 +141,34 @@ class api extends Main
  				->where('id',$id)
  				->field('param,base_url,method')
  				->find();
- 		$param =  $data['param'];
- 		$param =  trim($param);
- 		$param = rtrim($param,'|');
- 		$str = explode('|',$param);
- 		$des = '';
- 		foreach ($str as $key => $value) {
- 			$de =  explode(':', $value);
- 			$des.=$de[0].'='.$de[1].'&';
+
+ 		if($data['method']=='get'){
+ 			$param =  $data['param'];
+	 		$param =  trim($param);
+	 		$param = rtrim($param,'|');
+	 		$str = explode('|',$param);
+	 		$des = '';
+	 		foreach ($str as $key => $value) {
+	 			$de =  explode(':', $value);
+	 			$des.=$de[0].'='.$de[1].'&';
+	 		}
+	 		$des = trim($des,"&");
+			$res  = $this->doGet($data['base_url'].'?'.$des);
+			return $res;
+ 		}else{
+ 			$param =  $data['param'];
+	 		$param =  trim($param);
+	 		$param = rtrim($param,'|');
+	 		$str = explode('|',$param);
+	 		$des = array();
+	 		foreach ($str as  $value) {
+	 			$de  =  explode(':', $value);
+	 			$des[$de[0]] = $de[1]; 
+	 		}
+	 		
+	 		$res = $this->doPost($data['base_url'],$des,'charset:utf-8');
+	 		return $res;
  		}
- 		$des = trim($des,"&");
-		$res  = $this->doGet($data['base_url'].'?'.$des);
-		return $res;
  		return $this->fetch();
  	}
 
