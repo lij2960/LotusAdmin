@@ -1,9 +1,13 @@
 {include file="public/head"}
     <body>
     <div class="x-body">
+        {if $del_user eq 1}
        <button class="layui-btn  layui-btn-small layui-btn-danger" onclick="delAll()">批量删除</button>
+        {/if}
+        {if $add_user eq 1}
         <button class="layui-btn layui-btn-small " 
         onclick="x_admin_show('添加用户','showAdd.html',500,410)"></i>添加用户</button>
+        {/if}
         <button onclick="javascript:location.reload()" class="layui-btn layui-btn-small">刷新</button>
         <span class="x-right" style="line-height:40px">共有数据:<i class="i_count">{$users->total()}</i>条</span>
 
@@ -16,6 +20,7 @@
             <th>ID</th>
             <th>登录名</th>
             <th>注册邮箱</th>
+              <th>角色</th>
             <th>创建时间</th>
             <th>最后登录时间</th>
             <th>最后登录IP</th>
@@ -31,6 +36,12 @@
 	            <td>{$vo.id}</td>
 	            <td>{$vo.username}</td>
               <td>{$vo.email}</td>
+                <td>
+                    {php}
+                    $group_info = app\admin\model\AuthGroupModel::getByID($vo['group_id']);
+                    echo $group_info['title'];
+                    {/php}
+                </td>
 	            <td>{$vo.create_time}</td>
 	            <td>
                 {if condition="empty($vo.last_login_time)"}
@@ -41,9 +52,12 @@
               </td>
               <td>{$vo.last_login_ip}</td>
 	            <td>
-
-	<button class="layui-btn layui-btn-mini" onclick="x_admin_show('编辑用户','edit.html?id={$vo.id}',500,410)">编辑</button>
+                    {if $edit_user eq 1}
+	                <button class="layui-btn layui-btn-mini" onclick="x_admin_show('编辑用户','edit.html?id={$vo.id}',500,410)">编辑</button>
+                    {/if}
+                    {if $del_user eq 1}
 	             	<button onclick="delUser(this,{$vo.id})" class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
+                    {/if}
 	           </td>
 	        </tr>
         {/volist}

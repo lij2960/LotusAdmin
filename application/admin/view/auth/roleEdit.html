@@ -10,6 +10,25 @@
             <input type="hidden" value="{$data.id}" name="id">
             <div class="layui-form-item">
                 <label class="layui-form-label">
+                    用户角色
+                </label>
+                <div class="layui-input-block">
+                    <select  value="{$data['pid']}"  name="pid" id='group_id'>
+                        <option value="0">--请选择父级角色--</option>
+                        {php}
+                        foreach($auth_group as $vo){
+                        if($vo['id']==$data['pid']){
+                        {/php}
+                        <option  value="{$vo.id}" selected>{$vo.title}</option>
+                        {php}	}else{   {/php}
+                        <option value="{$vo.id}">{$vo.level-1|str_repeat='&nbsp;丨---',###}{$vo.title}</option>
+                        {php}  }   } {/php}
+
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
                     角色名称
                 </label>
                 <div class="layui-input-block">

@@ -146,3 +146,30 @@ function getClientIP()
 
     return $ip;
 }
+
+/**
+ * 获取随机字符串
+ * @param int $length
+ * @return string
+ */
+function randomStr( $length = 8 ) {
+    // 密码字符集，可任意添加你需要的字符
+    $chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    $str = '';
+    for ( $i = 0; $i < $length; $i++ )
+    {
+        $str .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+    }
+    return $str;
+}
+
+/**
+ * 密码生成规则
+ * @param $password
+ * @param $salt
+ * @return string
+ */
+function passwordStr($password,$salt){
+    $password = md5(md5($password).$salt);
+    return $password;
+}

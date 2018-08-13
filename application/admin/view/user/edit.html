@@ -24,7 +24,7 @@ header {
                         {/php} 
                            <option  value="{$vo.id}" selected>{$vo.title}</option>
                             {php}	}else{   {/php}
- 						    <option value="{$vo.id}">{$vo.title}</option>
+						<option value="{$vo.id}">{$vo.level-1|str_repeat='&nbsp;丨---',###}{$vo.title}</option>
                             {php}  }   } {/php}
                        
                     </select>

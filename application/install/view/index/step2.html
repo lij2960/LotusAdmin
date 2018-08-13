@@ -1,0 +1,35 @@
+{extend name='base'}
+{block name="css"}
+
+{/block}
+{block name='content'}
+<div class="swiper-container swiper-container-vertical">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide step1" style="height: 959px; margin-bottom: 30px;background-image:url(/public/static/images/int.gif);">
+            <div class="text">
+                提示信息：<br />
+                <div class="info" id="info">
+                    准备安装！
+                </div>
+            </div>
+            <div class="text">
+                {if $res neq "yes"}
+                <a class="button" href="#" onclick="install()">安装</a>
+                {else /}
+                <a class="button" href="step3">安装</a>
+                {/if}
+            </div>
+        </div>
+   
+    </div>
+</div>
+<script>
+    <!--{if $res neq "yes"}-->
+    function install() {
+        msg = "{$res}";
+        layer.msg(msg,{});
+    }
+    <!--{/if}-->
+</script>
+{/block}

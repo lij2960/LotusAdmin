@@ -14,4 +14,9 @@ class Role extends Validate
     	'title.min'		=>'角色名称太短',
     	'title.max'		=>'角色名称太长',
     ];
+    protected $scene = [
+        'edit'  => [
+            'title'       => 'require|min:2|max:20',
+        ],
+    ];
 }

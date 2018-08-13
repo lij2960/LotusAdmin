@@ -1,0 +1,58 @@
+{include file='public/head'}
+<body>
+<style type="text/css" media="screen">
+    header {
+        color: black;
+    }
+</style>
+
+
+<div class="x-body">
+    <table class="layui-table" lay-even="">
+        <tbody>
+        <tr>
+            <td>
+                用户名：
+            </td>
+            <td>
+                {$user_info['username']}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                手机号：
+            </td>
+            <td>
+                {$user_info['mobile']}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                邮箱：
+            </td>
+            <td>
+                {$user_info['email']}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                最后登录时间：
+            </td>
+            <td>
+                {$user_info['last_login_time']}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                最后登录IP：
+            </td>
+            <td>
+                {$user_info['last_login_ip']}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+{include file='public/foot'}

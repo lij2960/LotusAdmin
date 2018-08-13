@@ -17,11 +17,11 @@ return [
     // 数据库名
     'database'        => 'lotus',
     // 用户名
-    'username'        => 'lotus',
+    'username'        => 'root',
     // 密码
-    'password'        => 'whnde123',
+    'password'        => 'root',
     // 端口
-    'hostport'        => '',
+    'hostport'        => '3306',
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数
@@ -29,7 +29,7 @@ return [
     // 数据库编码默认采用utf8
     'charset'         => 'utf8',
     // 数据库表前缀
-    'prefix'          => 'sm_',
+    'prefix'          => 'cwl_',
     // 数据库调试模式
     'debug'           => true,
     // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)

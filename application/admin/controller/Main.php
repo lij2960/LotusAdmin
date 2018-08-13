@@ -1,6 +1,9 @@
 <?php
 namespace app\admin\controller;
 
+use app\admin\model\AuthGroupAccessModel;
+use app\admin\model\AuthGroupModel;
+use app\admin\model\UserModel;
 use org\Auth;
 use think\Controller;
 use think\Db;
@@ -12,7 +15,7 @@ class Main extends Controller
     {
         $username  = session('username');
         if (empty($username)) {
-            $this->redirect('admin/user/login');
+            $this->redirect('admin/login/index');
         }
         $this->getMenu();
     }
@@ -21,6 +24,11 @@ class Main extends Controller
      */
     protected function getMenu()
     {
+
+//        import('org.PHPExcel');
+//        $excel = new \PHPExcel();
+//        print_r($excel);exit;
+
         $menu           = [];
         $admin_id       = Session::get('user_id');
         $auth           = new Auth();
@@ -34,5 +42,57 @@ class Main extends Controller
         $this->assign('menu', $menu);
     }
 
-    
+    /**
+     * 验证用户操作权限
+     * @param $action
+     */
+    public function auth($action){
+        $admin_id = Session::get('user_id');
+        $auth = new Auth();
+        if (empty($admin_id) || !$auth->check($action, $admin_id)) {
+            $this->redirect('admin/index/index');
+            exit;
+        }
+    }
+
+    /**
+     * 根据用户ID获取其下属所有角色ID
+     * @param int $admin_id
+     * @return string
+     */
+    public function getRoleIdsByAdminID($admin_id = 0){
+        if($admin_id == 0){
+            $admin_id = Session::get('user_id');
+        }
+        $user_info = UserModel::getUserByID($admin_id);
+        $role_id = AuthGroupAccessModel::getRoleIDbyUserID($user_info['id']);
+
+        //目前是一个用户对应一个角色ID
+        $role_ids = $this->getRoles($role_id['group_id']);
+        return $role_ids;
+    }
+
+    private $str = "";
+    private $initI = 0;
+    /**
+     * 递归获取角色ID
+     * @param $role_id
+     * @param $str
+     * @return string
+     */
+    public function getRoles($role_id,$str=""){
+        if($this->initI){
+            $this->str = $str . "," . $role_id;
+        } else {
+            $this->str = $role_id;
+        }
+        $this->initI = $this->initI + 1;
+        $group_info = AuthGroupModel::getGroupByPID($role_id);
+        if (is_array($group_info)){
+            foreach ($group_info as $value){
+                $this->getRoles($value['id'],$this->str);
+            }
+        }
+        return $this->str;
+    }
 }

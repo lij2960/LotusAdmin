@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LotusAdmin</title>
+  <title>xxxxx信息技术股份有限公司</title>
   <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8" />
@@ -18,32 +18,20 @@
 <body>
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="./index.html">Lotus-admin-1.0</a></div>
+        <div class="logo"><a href="./index.html">车微联-admin-1.0</a></div>
         <div class="left_open">
             <i title="展开左侧栏" class="iconfont">&#xe699;</i>
         </div>
-        <ul class="layui-nav left fast-add" lay-filter="">
-          <li class="layui-nav-item">
-            <a href="javascript:;">+新增</a>
-
-            <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>
-              <dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>
-               <dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>
-            </dl>
-          </li>
-        </ul>
         
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
             <a href="javascript:;">{:session('username')}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
-              <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+              <dd><a onclick="x_admin_show('个人信息','/admin/user/detail',500,300)">个人信息</a></dd>
+              <dd><a onclick="x_admin_show('切换帐号','/admin/user/updatePWD',500,300)">修改密码</a></dd>
               <dd><a href="{:url('admin/user/logout')}">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
         </ul>
         
     </div>
@@ -63,16 +51,28 @@
                                 <cite>{$vo.title}</cite>
                                  <i class="iconfont nav_right">&#xe697;</i>
                             </a>
-                             <ul class="sub-menu">
+                             <!--<ul class="sub-menu">-->
                                  {foreach name="vo['children']" item="v"}
-                                    <li>
-                                        <a _href="{:url($v.name)}">
+                                    <!--<li>
+                                        <a _href="javascript:">
                                         <i class="iconfont">&#xe6a7;</i>
                                             <cite> {$v.title}</cite>
-                                        </a>
-                                     </li >
+                                        </a>-->
+                                        {if condition="isset($v['children'])"}
+                                        <ul class="sub-menu">
+                                            {foreach name="v['children']" item="t"}
+                                            <li>
+                                                <a _href="{:url($t.name)}">
+                                                    <i class="iconfont">&#xe6a7;</i>
+                                                    <cite> {$t.title}</cite>
+                                                </a>
+                                            </li >
+                                            {/foreach}
+                                        </ul>
+                                        {/if}
+                                     <!--</li >-->
                                 {/foreach}
-                            </ul>
+                            <!--</ul>-->
                         </li>
                     {else /}
                 <li>
@@ -110,7 +110,7 @@
     <!-- 中部结束 -->
     <!-- 底部开始 -->
     <div class="footer">
-        <div class="copyright">Copyright ©2017 Lotus-Admin v1.0 All Rights Reserved</div>  
+        <div class="copyright">Copyright ©2017 xxxxx信息技术股份有限公司-Admin v1.0 All Rights Reserved</div>
     </div>
     <!-- 底部结束 -->
     <script>

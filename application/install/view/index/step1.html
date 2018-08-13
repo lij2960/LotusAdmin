@@ -1,0 +1,49 @@
+{extend name='base'}
+{block name="css"}
+
+{/block}
+{block name='content'}
+<div class="swiper-container swiper-container-vertical">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide step1" style="height: 959px; margin-bottom: 30px;background-image:url(/public/static/images/int.gif);">
+            <div class="text">
+                提示信息：<br />
+                <div class="info">
+                    缓存目录：runtime写入权限
+                    {if $result['runtime'] eq 1}
+                    <span class="success">[ &#10003; ]</span>
+                    {else /}
+                    <span class="error">[ &#10005; ]</span>
+                    {/if}
+                    <br />
+
+                    文件上传目录：data写入权限
+                    {if $result['data'] eq 1}
+                    <span class="success">[ &#10003; ]</span>
+                    {else /}
+                    <span class="error">[ &#10005; ]</span>
+                    {/if}
+                    <br />
+
+                    请注意将网站根目录 application/database.php 配置好数据库库连接，然后点击下一步。
+                </div>
+            </div>
+            <div class="text">
+                {if $result['runtime'] eq 1 and $result['data'] eq 1}
+                    <a class="button" href="step2">下一步</a>
+                {else /}
+                    <a class="button" href="#" onclick="next()">下一步</a>
+                {/if}
+            </div>
+        </div>
+   
+    </div>
+</div>
+<script>
+    function next() {
+        msg = "页面有错误，请解决之后再点击下一步";
+        layer.msg(msg,{});
+    }
+</script>
+{/block}

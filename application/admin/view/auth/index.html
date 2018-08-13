@@ -1,9 +1,11 @@
 {include file="public/head"}
     <body>
     <div class="x-body" >
+        {if $add_auth eq 1}
         <button class="layui-btn layui-btn-small " onclick="x_admin_show('添加菜单','showAdd.html',500,460)"></i>添加菜单</button>
+        {/if}
         <button onclick="javascript:location.reload()" class="layui-btn layui-btn-small">刷新</button>
-        <span class="x-right" style="line-height:40px">共有数据:10条</span>
+        <span class="x-right" style="line-height:40px">共有数据:<i class="i_count">{$auth|count}</i>条</span>
 
     <table class="layui-table">
         <thead>
@@ -32,11 +34,15 @@
                                 </td>
                                 <td>{eq name='vo.status' value='1'}显示{else/}<font color="red">隐藏</font>{/eq}
                                 </td>
-                                <td> <!--<button type="button" class="btn btn-success">添加子菜单</button> <button type="button" class="btn btn-primary">编辑</button> <button type="button" class="btn btn-danger" onClick="delcfm('{:url(\'admin/menu/del\',[\'id\' => $vo[\'id\']])}','{$vo.title}')">删除</button>-->
+                                <td>
+                                    {if $edit_auth eq 1}
                                     <button type="button" onclick="x_admin_show('编辑菜单',
                                     'showEdit.html?id={$vo.id}',500,460)" class="layui-btn layui-btn-mini">编辑
                                     </button>
+                                    {/if}
+                                    {if $del_auth eq 1}
                                     <button type="button" onClick="deleteAuthRule({$vo.id})" class="layui-btn layui-btn-mini layui-btn-danger">删除</button>
+                                    {/if}
                                 </td>
                             </tr>
                             {/volist}

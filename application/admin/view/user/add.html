@@ -19,7 +19,7 @@ header {
                     <select lay-filter="aihao" name="group_id" id='group_id'>
                         </option>
                          {volist name='auth_group' id='vo'}
-                                <option value="{$vo.id}">{$vo.title}</option>
+						<option value="{$vo.id}">{$vo.level-1|str_repeat='&nbsp;丨---',###}{$vo.title}</option>
                          {/volist}
                     </select>
                 </div>
